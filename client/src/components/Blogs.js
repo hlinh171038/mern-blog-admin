@@ -1,6 +1,13 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
+import { useGlobalContext } from '../useContext'
 function Blogs() {
+    const {userInfo} = useGlobalContext()
+    const navigate = useNavigate()
+    if(!userInfo){
+        navigate('/login')
+    }
+    else{
   return (
     <div className='container'>
         <div className='bg-light d-flex flex-direction-columns gap-3 mt-3 '>
@@ -18,6 +25,7 @@ function Blogs() {
         </div>
     </div>
   )
+}
 }
 
 export default Blogs

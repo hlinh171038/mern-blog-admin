@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
 import {Form,FormGroup,Label,Input,Button,Alert} from 'reactstrap'
 import { useNavigate } from 'react-router-dom'
+import { useGlobalContext } from '../useContext'
+
 function LoginComponent() {
+  const {setUserInfo} = useGlobalContext()
   const [username,setUsername] = useState('')
   const [password,setPassword] = useState('')
   const [alert,setAlert] = useState(true)
@@ -16,7 +19,10 @@ const login = async(e)=>{
     credentials:"include"
   })
   if(response.ok){
-    navigate('/')
+    response.json().then(userInfo=>{
+      setUserInfo(userInfo);
+      navigate('/')
+    })
   }else{
     setAlert(false)
   }
