@@ -7,7 +7,6 @@ function Home() {
     <main>
       <Navbar/>
       <Blogs/>
-      <Blogs/>
     </main>
   )
 }

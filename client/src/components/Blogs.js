@@ -1,28 +1,30 @@
-import React from 'react'
+import React, { useEffect,useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../useContext'
+import Blog from './Blog'
 function Blogs() {
     const {userInfo} = useGlobalContext()
+    const [posts,setPosts] = useState([])
     const navigate = useNavigate()
+
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/post').then(response=>{
+            response.json().then(posts=>{
+                setPosts(posts)
+            })
+        })
+    },[])
     if(!userInfo){
         navigate('/login')
     }
     else{
   return (
-    <div className='container'>
-        <div className='bg-light d-flex flex-direction-columns gap-3 mt-3 '>
-            <div className='col-lg-4'>
-                <img src="https://cdn.pixabay.com/photo/2023/03/22/20/16/muffin-7870491_640.jpg" className='w-100 m-1'/>
-            </div>
-            <div className='col-lg-8'>
-                <h2 className='text-transform-uppercase text-dark'>Tiep buoc truyen nhan</h2>
-                <div className='d-flex small'>
-                    <div className='text-secondary me-3'>times:</div>
-                    <div className='text-secondary'>21-10-2022 14:23</div>
-                </div>
-                <div className='content text-muted  ' >this is content, lorem is me</div>
-            </div>
-        </div>
+    <div >
+        <h2 className='text-center mt-5 mb-5'>BLOGS</h2>
+       {posts.map(item=>{
+        return <Blog {...item}/>
+       })}
     </div>
   )
 }

@@ -30,6 +30,7 @@ const login = async(e)=>{
 
   return (
     <div className='container w-25 bg-light p-3 mt-5'>
+      <h3 className='text-dark text-center' >Login</h3>
       {!alert &&  <Alert color="danger">
                     Email or password is wrong
                   </Alert>}

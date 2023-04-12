@@ -25,8 +25,9 @@ const registry = async(e)=>{
 
   return (
     <div className='container w-25 bg-light p-3 mt-5'>
+      <h3 className='text-dark text-center' >Registry</h3>
         {!alert &&   <Alert color="danger">
-                        Registry fail
+                        Email is esixted
                     </Alert>}
       <Form onSubmit={registry}>
         <FormGroup>
@@ -36,7 +37,7 @@ const registry = async(e)=>{
           <Input
             id="exampleEmail"
             name="email"
-            placeholder="with a placeholder"
+            placeholder="email"
             type="email"
             value={username}
             onChange={e=>setUsername(e.target.value)}
@@ -49,7 +50,7 @@ const registry = async(e)=>{
           <Input
             id="examplePassword"
             name="password"
-            placeholder="password placeholder"
+            placeholder="password "
             type="password"
             value={password}
             onChange={e=>setPassword(e.target.value)}
@@ -57,12 +58,12 @@ const registry = async(e)=>{
         </FormGroup>
         <FormGroup>
           <Label for="examplePassword">
-            Reset Password
+            Confirm Password
           </Label>
           <Input
             id="examplePassword"
             name="password"
-            placeholder="password placeholder"
+            placeholder="confirm password"
             type="password"
             value={resetPassword}
             onChange={e=>setResetPassword(e.target.value)}

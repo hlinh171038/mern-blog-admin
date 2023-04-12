@@ -1,10 +1,14 @@
 import React from 'react'
+import CreateComponent from '../components/CreateComponent'
+import Navbar from '../components/Navbar'
+
 
 function CreatePost() {
   return (
-    <div>
-      this is create post pages
-    </div>
+   <>
+   <Navbar/>
+   <CreateComponent/>
+   </>
   )
 }
 
